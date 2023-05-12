@@ -1,7 +1,3 @@
-//
-// Created by Piotr Szczypior on 30/04/2023.
-//
-
 #include "Timer.h"
 
 void Timer::timeStart() {
@@ -13,5 +9,5 @@ void Timer::timeStop() {
 }
 
 long long Timer::elapsedTime() {
-    return duration_cast<microseconds>(endTime - initialTime).count();
+    return duration_cast<nanoseconds>(endTime - initialTime).count();
 }

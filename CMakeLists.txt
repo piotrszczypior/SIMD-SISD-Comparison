@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.25)
-project(untitled)
+project(lab3)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(untitled main.cpp CalculatorSISD.h TimeTesterSISD.h Timer.cpp Timer.h Vector4f.h RandomGenerator.h Vector4l.h CalculatorSIMD.h TimeTesterSIMD.h RandomGenerator.cpp FileWriter.cpp FileWriter.h)
+add_executable(lab3 main.cpp CalculatorSISD.h TimeTesterSISD.h Timer.cpp Timer.h Vector4f.h RandomGenerator.h Vector4l.h CalculatorSIMD.h TimeTesterSIMD.h RandomGenerator.cpp FileWriter.cpp FileWriter.h)

@@ -1,7 +1,3 @@
-//
-// Created by Piotr Szczypior on 05/05/2023.
-//
-
 #include <list>
 #include "FileWriter.h"
 
@@ -29,7 +25,8 @@ void FileWriter::write_to_txt(string file_name, string operation_type, int eleme
 }
 
 void FileWriter::write_csv(const string& dir, string operation, int elements_size, long long int time) {
-
+    operation += "_";
+    operation += dir;
     operation += ".csv";
     string file_name = operation;
     std::ofstream file;

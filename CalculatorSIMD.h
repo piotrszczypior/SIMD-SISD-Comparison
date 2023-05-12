@@ -1,28 +1,35 @@
-//
-// Created by Piotr Szczypior on 05/05/2023.
-//
-
 #ifndef UNTITLED_CALCULATORSIMD_H
 #define UNTITLED_CALCULATORSIMD_H
-#pragma once
-
+#include "Timer.h"
+ 
 class CalculatorSIMD {
+private:
+    Timer *timer;
 public:
-    template<class T>
-    void add(T &first_vector, T &second_vector, T &result);
+    CalculatorSIMD();
 
     template<class T>
-    void subtract(T &first_vector, T &second_vector, T &result);
+    long long add(T &first_vector, T &second_vector, T &result);
 
     template<class T>
-    void divide(T &first_vector, T &second_vector, T &result);
+    long long subtract(T &first_vector, T &second_vector, T &result);
 
     template<class T>
-    void multiply(T &first_vector, T &second_vector, T &result);
+    long long divide(T &first_vector, T &second_vector, T &result);
+
+    template<class T>
+    long long multiply(T &first_vector, T &second_vector, T &result);
+
+    ~CalculatorSIMD();
 };
 
+CalculatorSIMD::CalculatorSIMD() {
+    timer = new Timer();
+}
+
 template<class T>
-void CalculatorSIMD::multiply(T &first_vector, T &second_vector, T &result) {
+long long CalculatorSIMD::multiply(T &first_vector, T &second_vector, T &result) {
+    timer->timeStart();
     __asm__ (
             "movups %1, %%xmm0\n\t"
             "movups %2, %%xmm1\n\t"
@@ -31,10 +38,13 @@ void CalculatorSIMD::multiply(T &first_vector, T &second_vector, T &result) {
             : "=m" (result)
             : "m" (first_vector), "m" (second_vector)
             );
+    timer->timeStop();
+    return timer->elapsedTime();
 }
 
 template<class T>
-void CalculatorSIMD::divide(T &first_vector, T &second_vector, T &result) {
+long long CalculatorSIMD::divide(T &first_vector, T &second_vector, T &result) {
+    timer->timeStart();
     __asm__ (
             "movups %1, %%xmm0\n\t"
             "movups %2, %%xmm1\n\t"
@@ -43,10 +53,13 @@ void CalculatorSIMD::divide(T &first_vector, T &second_vector, T &result) {
             : "=m" (result)
             : "m" (first_vector), "m" (second_vector)
             );
+    timer->timeStop();
+    return timer->elapsedTime();
 }
 
 template<class T>
-void CalculatorSIMD::subtract(T &first_vector, T &second_vector, T &result) {
+long long CalculatorSIMD::subtract(T &first_vector, T &second_vector, T &result) {
+    timer->timeStart();
     __asm__ (
             "movups %1, %%xmm0\n\t"
             "movups %2, %%xmm1\n\t"
@@ -55,10 +68,13 @@ void CalculatorSIMD::subtract(T &first_vector, T &second_vector, T &result) {
             : "=m" (result)
             : "m" (first_vector), "m" (second_vector)
             );
+    timer->timeStop();
+    return timer->elapsedTime();
 }
 
 template<class T>
-void CalculatorSIMD::add(T &first_vector, T &second_vector, T &result) {
+long long CalculatorSIMD::add(T &first_vector, T &second_vector, T &result) {
+    timer->timeStart();
     __asm__ (
             "movups %1, %%xmm0\n\t"
             "movups %2, %%xmm1\n\t"
@@ -67,7 +83,12 @@ void CalculatorSIMD::add(T &first_vector, T &second_vector, T &result) {
             : "=m" (result)
             : "m" (first_vector), "m" (second_vector)
             );
+    timer->timeStop();
+    return timer->elapsedTime();
 }
 
+CalculatorSIMD::~CalculatorSIMD() {
+    delete timer;
+}
 
 #endif //UNTITLED_CALCULATORSIMD_H

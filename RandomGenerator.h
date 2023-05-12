@@ -1,7 +1,3 @@
-//
-// Created by Piotr Szczypior on 30/04/2023.
-//
-
 #ifndef UNTITLED_RANDOMGENERATOR_H
 #define UNTITLED_RANDOMGENERATOR_H
 

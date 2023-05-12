@@ -1,7 +1,3 @@
-//
-// Created by Piotr Szczypior on 30/04/2023.
-//
-
 #ifndef UNTITLED_VECTOR4L_H
 #define UNTITLED_VECTOR4L_H
 

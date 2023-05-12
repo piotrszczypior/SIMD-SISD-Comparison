@@ -1,7 +1,3 @@
-//
-// Created by Piotr Szczypior on 05/05/2023.
-//
-
 #ifndef UNTITLED_FILEWRITER_H
 #define UNTITLED_FILEWRITER_H
 

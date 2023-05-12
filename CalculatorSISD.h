@@ -1,31 +1,39 @@
-//
-// Created by Piotr Szczypior on 30/04/2023.
-//
-
 #ifndef UNTITLED_CALCULATORSISD_H
 #define UNTITLED_CALCULATORSISD_H
 
 #include <vector>
+#include "Timer.h"
 
 using namespace std;
 
 class CalculatorSISD {
+private:
+    Timer *timer;
 public:
-    template<class T>
-    void add(T &first_number, T &second_number, T &result);
+    CalculatorSISD();
 
     template<class T>
-    void subtract(T &first_number, T &second_number, T &result);
+    long long add(T &first_number, T &second_number, T &result);
 
     template<class T>
-    void divide(T &first_number, T &second_number, T &result);
+    long long subtract(T &first_number, T &second_number, T &result);
 
     template<class T>
-    void multiply(T &first_number, T &second_number, T &result);
+    long long divide(T &first_number, T &second_number, T &result);
+
+    template<class T>
+    long long multiply(T &first_number, T &second_number, T &result);
+
+    ~CalculatorSISD();
 };
 
+CalculatorSISD::CalculatorSISD() {
+    this->timer = new Timer();
+}
+
 template<class T>
-void CalculatorSISD::add(T &first_number, T &second_number, T &result) {
+long long CalculatorSISD::add(T &first_number, T &second_number, T &result) {
+    timer->timeStart();
     __asm__ (
             "flds %1\n\t"
             "flds %2\n\t"
@@ -34,10 +42,13 @@ void CalculatorSISD::add(T &first_number, T &second_number, T &result) {
             : "=m" (result)
             : "m" (first_number), "m" (second_number)
             );
+    timer->timeStop();
+    return timer->elapsedTime();
 }
 
 template<class T>
-void CalculatorSISD::subtract(T &first_number, T &second_number, T &result) {
+long long CalculatorSISD::subtract(T &first_number, T &second_number, T &result) {
+    timer->timeStart();
     __asm__ (
             "flds %1\n\t"
             "flds %2\n\t"
@@ -46,11 +57,14 @@ void CalculatorSISD::subtract(T &first_number, T &second_number, T &result) {
             : "=m" (result)
             : "m" (first_number), "m" (second_number)
             );
+    timer->timeStop();
+    return timer->elapsedTime();
 }
 
 
 template<class T>
-void CalculatorSISD::multiply(T &first_number, T &second_number, T &result) {
+long long CalculatorSISD::multiply(T &first_number, T &second_number, T &result) {
+    timer->timeStart();
     __asm__ (
             "flds %1\n\t"
             "flds %2\n\t"
@@ -59,10 +73,13 @@ void CalculatorSISD::multiply(T &first_number, T &second_number, T &result) {
             : "=m" (result)
             : "m" (first_number), "m" (second_number)
             );
+    timer->timeStop();
+    return timer->elapsedTime();
 }
 
 template<class T>
-void CalculatorSISD::divide(T &first_number, T &second_number, T &result) {
+long long CalculatorSISD::divide(T &first_number, T &second_number, T &result) {
+    timer->timeStart();
     __asm__ (
             "flds %1\n\t"
             "flds %2\n\t"
@@ -71,6 +88,12 @@ void CalculatorSISD::divide(T &first_number, T &second_number, T &result) {
             : "=m" (result)
             : "m" (first_number), "m" (second_number)
             );
+    timer->timeStop();
+    return timer->elapsedTime();
+}
+
+CalculatorSISD::~CalculatorSISD() {
+    delete timer;
 }
 
 

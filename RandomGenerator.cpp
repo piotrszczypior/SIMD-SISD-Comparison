@@ -1,7 +1,3 @@
-//
-// Created by Piotr Szczypior on 05/05/2023.
-//
-
 #include "RandomGenerator.h"
 
 void RandomGenerator::fill_collection_float(vector<Vector4f> &vector, int size) {
