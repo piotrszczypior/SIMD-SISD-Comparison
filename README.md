@@ -1,7 +1,7 @@
 # SIMD-SISD-Comparison
 
 ````bash 
-./{executable file} {type_of_calculation}
+./{executable_file} <type_of_calculation>
 ````
 
 ## Graphs
