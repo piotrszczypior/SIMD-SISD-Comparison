@@ -8,5 +8,9 @@ calculation type: SISD, SIMD
 ## Graphs
 
 ````bash
+pip install -r requirements.txt
+````
+
+````bash
 python3 plot.py <directory_of_csv_files>
 ````
