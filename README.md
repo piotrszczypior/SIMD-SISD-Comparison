@@ -1,6 +1,6 @@
 # SIMD-SISD-Comparison
 calculation type: SISD, SIMD
-Plots has been put in [paper](SISD_SIMD_comparison.pdf)
+Plots has been put in [paper](SIMD_SISD_comparison.pdf)
 
 ````bash 
 ./{executable_file} <type_of_calculation>
