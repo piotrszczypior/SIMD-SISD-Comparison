@@ -1,5 +1,6 @@
 # SIMD-SISD-Comparison
 calculation type: SISD, SIMD
+Plots has been put in [paper](SISD_SIMD_comparison.pdf)
 
 ````bash 
 ./{executable_file} <type_of_calculation>
@@ -14,3 +15,5 @@ pip install -r requirements.txt
 ````bash
 python3 plot.py <directory_of_csv_files>
 ````
+
+
